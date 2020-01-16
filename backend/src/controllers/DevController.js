@@ -26,22 +26,22 @@ module.exports = {
                 coordinates: [longitude, latitude],
             };
         
-            const dev = await Dev.create({
+            dev = await Dev.create({
                 github_username,
                 name,
                 avatar_url,
                 bio,
                 techs: techsArray,
                 location,
-            });
-       }  
-        
+            })
+        }          
+
         return response.json(dev);
     },
 
     async update(request, response) {
         //Atualiza apenas Nome e Bio
-        const { github_username, name, bio, techs } = request.query;
+        const { github_username, name, bio, techs } = request.body;
 
         const techsArray = parseStringAsArray(techs);
 
